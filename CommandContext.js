@@ -40,10 +40,6 @@ module.exports = class CommandContext {
      * @param {string} content 
      */
     Reply = async (content) => {
-        let trans = this.GetTranslation(content);
-
-        if (trans)
-            content = trans;
         
         let recipient = this.Message.IsGroup ? this.Message.Recipient : this.Message.Originator;
 
