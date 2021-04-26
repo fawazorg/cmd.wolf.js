@@ -27,13 +27,13 @@ module.exports = class PlayerQueue {
   }
   PlaySong = (index = 0, on_success, on_failure) => {
     if (index > this.Songs.length - 1) {
-      on_failure(6);
+      on_failure(12);
       return;
     }
     let song = this.Songs[index];
-    this.SetCurrent(song);
-    this.SetLast(song);
     if (song) {
+      this.SetCurrent(song);
+      this.SetLast(song);
       this.Live = true;
       on_success(song);
       return;
