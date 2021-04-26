@@ -101,6 +101,7 @@ module.exports = class Player {
               return;
             },
             (e) => {
+              queue.Playing = false;
               on_failure(e);
               return;
             }
@@ -135,6 +136,7 @@ module.exports = class Player {
         return;
       },
       (e) => {
+        queue.Playing = false;
         on_failure(e);
       }
     );
@@ -164,7 +166,7 @@ module.exports = class Player {
    */
   Stop = async (gid, on_success, on_failure) => {
     let queue = this.FirstOrCreate(gid);
-    if (!queue.CurrentSong || queue.Playing) {
+    if (!queue.CurrentSong || !queue.Playing) {
       on_failure(14);
       return;
     }
