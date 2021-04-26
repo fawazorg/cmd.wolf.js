@@ -272,7 +272,6 @@ module.exports = class Player {
     }
   };
   List = (gid, on_success, on_failure) => {
-    // add respone data + cheak if has list first
     let queue = this.FirstOrCreate(gid);
     if (queue.Songs.length > 0) {
       on_success(queue.ListFromat());

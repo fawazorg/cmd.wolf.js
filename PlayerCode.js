@@ -144,7 +144,7 @@ module.exports = class PlayerCode {
     {
       id: 21,
       massage: {
-        ar: "جملةالبحث قصيرة جدا لابد ان تكون 5 احرف على الاقل .",
+        ar: "جملة البحث قصيرة جدا لابد ان تكون 5 احرف على الاقل .",
         en: "Query text is too short. minmum 5 char",
       },
     },
