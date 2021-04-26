@@ -219,10 +219,22 @@ module.exports = class Player {
       }
     );
   };
+  /**
+   *
+   * @param {number} gid
+   * @param {string} args
+   * @param {Function} on_success
+   * @param {Function} on_failure
+   * @returns
+   */
   Add = async (gid, args, on_success, on_failure) => {
     let queue = this.FirstOrCreate(gid);
     if (queue.Songs.length >= 5) {
       on_failure(10);
+      return;
+    }
+    if (args.length < 5) {
+      on_failure(21);
       return;
     }
     await this.load(

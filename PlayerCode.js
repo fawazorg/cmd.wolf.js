@@ -141,6 +141,13 @@ module.exports = class PlayerCode {
         en: "Max durtion is 15 min.",
       },
     },
+    {
+      id: 21,
+      massage: {
+        ar: "جملةالبحث قصيرة جدا لابد ان تكون 5 احرف على الاقل .",
+        en: "Query text is too short. minmum 5 char",
+      },
+    },
   ];
 
   getCode = (id, lang) => {

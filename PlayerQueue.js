@@ -139,6 +139,7 @@ module.exports = class PlayerQueue {
     return format;
   };
   SongFromat = (song) => {
+    if (!song) return;
     let current =
       this.CurrentSong === null ? false : song.ID === this.CurrentSong.ID;
     return `${current ? "⏹" : ""}${song.Title}`;
