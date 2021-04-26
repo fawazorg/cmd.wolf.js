@@ -164,7 +164,7 @@ module.exports = class Player {
    */
   Stop = async (gid, on_success, on_failure) => {
     let queue = this.FirstOrCreate(gid);
-    if (!queue.CurrentSong) {
+    if (!queue.CurrentSong || queue.Playing) {
       on_failure(14);
       return;
     }
