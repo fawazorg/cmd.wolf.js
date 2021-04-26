@@ -128,6 +128,7 @@ module.exports = class PlayerQueue {
     }
   };
   ListFromat = () => {
+    if (this.Songs.length === 0) return;
     var format = "\n";
     this.Songs.forEach((song, index, arry) => {
       if (index === arry.length - 1) {
