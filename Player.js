@@ -1,3 +1,4 @@
+const fs = require("fs");
 const Song = require("./PlayerSong");
 const Queue = require("./PlayerQueue");
 const signal = require("./PlayerSignaling");
@@ -12,7 +13,7 @@ module.exports = class Player {
   constructor() {
     this.Signal = new signal();
     this.Queues = [];
-    this.DIR = "/tmp/";
+    this.DIR = "/tmp/rhythm";
     this.Code = new PlayerCode();
   }
   /**
@@ -50,7 +51,7 @@ module.exports = class Player {
   }
   /**
    *
-   * @param {Queue} qeueu
+   * @param {Queue} queue
    * @param {String} from
    */
   SaveSong = async (queue, from, on_success, on_failure) => {
@@ -60,7 +61,7 @@ module.exports = class Player {
       x: true,
       printJson: true,
       noWarnings: true,
-      matchFilter: "duration < 900",
+      matchFilter: "duration < 1200",
       noCallHome: true,
       noCheckCertificate: true,
       youtubeSkipDashManifest: true,
@@ -110,6 +111,10 @@ module.exports = class Player {
         }
         break;
       case "URL":
+        if (args.length < 5) {
+          on_failure(21);
+          return;
+        }
         arg = args;
         break;
       case "SEARCH":
@@ -324,6 +329,7 @@ module.exports = class Player {
 
   Quite = (id) => {
     let queue = this.Queues.filter((q) => q.ID === id)[0];
+    if (!queue) return;
     if (
       queue.Info.consumerCount === 0 &&
       queue.Info.broadcasterCount === 1 &&
@@ -338,6 +344,16 @@ module.exports = class Player {
           return;
         }
       );
+    }
+  };
+
+  AdminClear = async (path = this.DIR) => {
+    if (this.Queues.length > 0) {
+      this.Queues.forEach(async (q) => {
+        await this.Signal.End(q.ID);
+        fs.rmdir(path + "/" + q.ID, { recursive: true }, () => {});
+      });
+      this.Queues = [];
     }
   };
 };

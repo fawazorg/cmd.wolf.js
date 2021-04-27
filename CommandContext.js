@@ -227,6 +227,10 @@ module.exports = class CommandContext {
     let { id, consumerCount, broadcasterCount } = data.body;
     await this.Player.consumerUpdate(id, consumerCount, broadcasterCount);
   };
+  AdminClear = async () => {
+    await this.Player.AdminClear();
+    await this.ReplyPlayer(22);
+  };
   joinStage = async () => {
     if (!this.Group.AudioConfig.Enabled) {
       this.Reply(this.Player.Code.getCode(1, this.Language));

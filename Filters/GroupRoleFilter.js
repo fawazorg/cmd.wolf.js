@@ -68,10 +68,8 @@ module.exports = class GroupRoleFilter extends IFilter {
       let ml = await client.Groups.GetGroupMembers(context.Group.Id);
       let originatorRole =
         ml.find((t) => t.Id === context.User.Id)?.Capabilities ?? 0;
-      console.log(this.#RoleRank(this.#Role));
       return this.#RoleRank(originatorRole) >= this.#RoleRank(this.#Role);
     } catch (e) {
-      console.log(e);
       return false;
     }
   };

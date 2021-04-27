@@ -24,35 +24,35 @@ module.exports = class PlayerCode {
     {
       id: 4,
       massage: {
-        ar: "(y) تمت اضافة الاغنية : \n",
+        ar: "(y) تمت اضافة مقطع الصوت : \n",
         en: "(y) song was add :\n",
       },
     },
     {
       id: 5,
       massage: {
-        ar: "(n) لم نتمكن من إيجاد الاغنية.",
+        ar: "(n) لم نتمكن من إيجاد مقطع الصوت.",
         en: "(n) we can't Found this song.",
       },
     },
     {
       id: 6,
       massage: {
-        ar: "قائمة الغرفة فارغة، استخدم !ر اضافة لاضافة اغنية.",
+        ar: "قائمة الغرفة فارغة، استخدم !ر اضافة لاضافة مقطع صوت.",
         en: "Your list is empty, To add item use !r add.",
       },
     },
     {
       id: 7,
       massage: {
-        ar: "لا يوجد المزيد من الاغاني في القائمة.",
+        ar: "لا يوجد المزيد من مقاطع الصوت في القائمة.",
         en: "No more songs in your list.",
       },
     },
     {
       id: 8,
       massage: {
-        ar: "(y) تم إيقاف تشغيل الاغنية",
+        ar: "(y) تم إيقاف تشغيل مقطع الصوت",
         en: "(y) The song has finished playing",
       },
     },
@@ -66,49 +66,49 @@ module.exports = class PlayerCode {
     {
       id: 10,
       massage: {
-        ar: "لقد وصلت للحد الاقصى من عدد الاغنيات اللتي يمكنك اضافتها.",
+        ar: "لقد وصلت للحد الاقصى من عدد مقاطع الصوت اللتي يمكنك اضافتها.",
         en: "You have reached the maximum number of songs that you can add.",
       },
     },
     {
       id: 11,
       massage: {
-        ar: "(y) تم حذف الاغنية بنجاح",
+        ar: "(y) تم حذف مقطع الصوت بنجاح",
         en: "(y) The song has been deleted successfully.",
       },
     },
     {
       id: 12,
       massage: {
-        ar: "لم نتمكن من إيجاد اغنية بهذا الرقم.",
+        ar: "لم نتمكن من إيجاد مقطع صوت بهذا الرقم.",
         en: "We could not find a song with this index",
       },
     },
     {
       id: 13,
       massage: {
-        ar: "الرجاء ادخال رقم الاغنية بشكل صحيح.",
+        ar: "الرجاء ادخال رقم مقطع الصوت بشكل صحيح.",
         en: "Please enter the song number correctly.",
       },
     },
     {
       id: 14,
       massage: {
-        ar: "لا توجد اغنية قيد التشغيل.",
+        ar: "لا يوجد مقطع صوت قيد التشغيل.",
         en: "There is no song playing.",
       },
     },
     {
       id: 15,
       massage: {
-        ar: "هناك اغنية قيد التشغيل، حاول مرة اخرى بعد استخدم !ر ايقاف.",
+        ar: "هناك مقطع قيد التشغيل، حاول مرة اخرى بعد استخدم !ر ايقاف.",
         en: "There is a song already playing, try again after using !r stop.",
       },
     },
     {
       id: 16,
       massage: {
-        ar: "الاغنية الحالية : \n",
+        ar: "مقطع الصوت الحالي : \n",
         en: "Current song: \n",
       },
     },
@@ -137,15 +137,22 @@ module.exports = class PlayerCode {
     {
       id: 20,
       massage: {
-        ar: "يجب ان لا تتجاوز الاغنية 15 دقيقة .",
-        en: "Max durtion is 15 min.",
+        ar: "الحد الاعلى لمقطع الصوت 20 دقيقة .",
+        en: "Max durtion is 20 min.",
       },
     },
     {
       id: 21,
       massage: {
         ar: "جملة البحث قصيرة جدا لابد ان تكون 5 احرف على الاقل .",
-        en: "Query text is too short. minmum 5 char",
+        en: "Query text is too short. minmum 5 char.",
+      },
+    },
+    {
+      id: 22,
+      massage: {
+        ar: "تم مسح جميع ملفات الغرف .",
+        en: "All groups file has been deleted.",
       },
     },
   ];
