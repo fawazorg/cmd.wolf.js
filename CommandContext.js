@@ -26,8 +26,6 @@ module.exports = class CommandContext {
     this.Group = data.group;
     this.Rest = data.rest;
     this.Player = data.player;
-    this.Player.Signal.Conn.on("song_end", this.SongEnd);
-    this.Client.V3.Conn.on("group audio count update", this.CountUpdate);
     // TODO: check for audio change slot if you not have pepole deop stage.
     // TODO : make this all changes in new packge and use suber() here.
   }
@@ -214,18 +212,6 @@ module.exports = class CommandContext {
         await this.ReplyPlayer(e);
       }
     );
-  };
-  SongEnd = async (data) => {
-    let gid = JSON.parse(data).gid;
-    this.Player.song_end(gid, async (loop) => {
-      if (loop) {
-        //await this.Next(gid);
-      }
-    });
-  };
-  CountUpdate = async (data) => {
-    let { id, consumerCount, broadcasterCount } = data.body;
-    await this.Player.consumerUpdate(id, consumerCount, broadcasterCount);
   };
   AdminClear = async () => {
     await this.Player.AdminClear();

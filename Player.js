@@ -24,7 +24,7 @@ module.exports = class Player {
   FirstOrCreate = (qid) => {
     let gq = this.Queues.filter((q) => q.ID === qid);
     if (gq.length > 0) return gq[0];
-    gq = new Queue(qid, true, false, [], null, null);
+    gq = new Queue(qid, false, false, [], null, null);
     this.Queues.push(gq);
     return gq;
   };
@@ -294,30 +294,37 @@ module.exports = class Player {
     on_failure(6);
   };
   End = async (gid, on_success, on_failure) => {
-    // TODO: add stage staus in queue for better.
     let queue = this.FirstOrCreate(gid);
     if (queue.Live) {
       queue.CurrentSong = null;
       queue.Playing = false;
       queue.Live = false;
       await this.Signal.End(gid);
-      on_success(19);
+      if (on_success) on_success(19);
       return;
     }
-    on_failure(18);
+    if (on_failure) on_failure(18);
   };
-  song_end = async (gid, callback) => {
-    // TODO: if loop go to next song or repaet thes song agein
-    // TODO: Set time out of 1 or 2 minets if there not curent song plying drop stage.
+  song_end = async (data) => {
+    let { gid } = JSON.parse(data);
     let queue = this.FirstOrCreate(gid);
-    let song = queue.CurrentSong;
-    // TODO : if song not in songs delete the song
+    if (queue.Loop && queue.Songs.length > 0) {
+      this.Next(
+        queue.ID,
+        (s) => {},
+        (e) => {}
+      );
+      return;
+    }
     queue.Playing = false;
     queue.CurrentSong = null;
-    callback(queue.Loop && queue.Songs.length > 0);
+    setTimeout(async () => {
+      if (queue.CurrentSong) await this.End(queue.ID);
+    }, 90000);
     return;
   };
-  consumerUpdate = async (id, consumerCount, broadcasterCount) => {
+  consumerUpdate = async (data) => {
+    let { id, consumerCount, broadcasterCount } = data.body;
     let queue = this.Queues.filter((q) => q.ID === id)[0];
     if (queue) {
       queue.Info = { consumerCount, broadcasterCount };
