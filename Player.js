@@ -318,9 +318,6 @@ module.exports = class Player {
     }
     queue.Playing = false;
     queue.CurrentSong = null;
-    setTimeout(async () => {
-      if (queue.CurrentSong) await this.End(queue.ID);
-    }, 90000);
     return;
   };
   consumerUpdate = async (data) => {

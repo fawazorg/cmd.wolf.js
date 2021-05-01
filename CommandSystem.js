@@ -29,10 +29,12 @@ module.exports = class CommandSystem {
 
     this.#Client.On.Message.Received = this.#ProcessMessage;
     this.#Player.Signal.Conn.on("song_end", this.#Player.song_end);
+    /*
     this.#Client.V3.Conn.on(
       "group audio count update",
       this.#Player.consumerUpdate
     );
+    */
   }
 
   /**
