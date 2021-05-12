@@ -307,6 +307,7 @@ module.exports = class Player {
   };
   song_end = async (data) => {
     let { gid } = JSON.parse(data);
+    console.log("END: " + gid);
     let queue = this.FirstOrCreate(gid);
     if (queue.Loop && queue.Songs.length > 0) {
       this.Next(
@@ -318,10 +319,6 @@ module.exports = class Player {
     }
     queue.Playing = false;
     queue.CurrentSong = null;
-    setTimeout(async () => {
-      if (queue.CurrentSong) await this.End(queue.ID);
-    }, 90000);
-    return;
   };
   consumerUpdate = async (data) => {
     let { id, consumerCount, broadcasterCount } = data.body;
@@ -342,6 +339,7 @@ module.exports = class Player {
       queue.Info.broadcasterCount === 1 &&
       queue.Live
     ) {
+      console.log("Quite");
       this.End(
         id,
         (s) => {
