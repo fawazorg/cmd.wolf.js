@@ -7,6 +7,7 @@ const {
   PrivateFilter,
   GroupRoleFilter,
   BotMaker,
+  Banded,
   GroupRole,
   Privileges,
 } = require("./Filters/index");
@@ -20,6 +21,7 @@ module.exports = {
   PrivateFilter,
   GroupRoleFilter,
   BotMaker,
+  Banded,
   GroupRole,
   Privileges,
 };
