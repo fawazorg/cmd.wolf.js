@@ -1390,13 +1390,9 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.2 || 2"
 
-wolf.js@fawazorg/wolf.js:
-  version "3.0.0-alpha.3"
-  resolved "https://codeload.github.com/fawazorg/wolf.js/tar.gz/a5fcf1a0a2014e5c3ca1ccabc77979ced48591d1"
-  dependencies:
-    node-pre-gyp "^0.17.0"
-    socket.io-client "2.3.1"
-    tiny-async-pool "^1.2.0"
+"wolf.js@link:../wolf.js":
+  version "0.0.0"
+  uid ""
 
 wrappy@1:
   version "1.0.2"

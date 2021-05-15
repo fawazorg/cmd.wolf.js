@@ -1,6 +1,10 @@
 {
   "name": "commands.wolf.js",
+<<<<<<< HEAD
   "version": "2.0.14",
+=======
+  "version": "2.0.16",
+>>>>>>> 8e752fea4a53561d3dfb9ed9683c1e4741c324bc
   "description": "The Worlds Online Festival API Command System",
   "main": "index.js",
   "repository": "https://github.com/christopher-wolflive/commands.wolf.js.git",
@@ -9,7 +13,7 @@
   "private": false,
   "dependencies": {
     "mime-types": "^2.1.27",
-    "wolf.js": "fawazorg/wolf.js",
+    "wolf.js": "link:../wolf.js",
     "youtube-dl-exec": "^1.2.1"
   }
 }

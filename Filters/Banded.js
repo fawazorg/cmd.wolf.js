@@ -2,14 +2,14 @@ const IFilter = require("./IFilter");
 const { Client } = require("wolf.js");
 const CommandContext = require("../CommandContext");
 
-module.exports = class Banded extends IFilter {
-  #Maker = 80512250;
+module.exports = class BotMaker extends IFilter {
+  #Maker = 12500068;
   /**
    * Only Bot Maker Can Use This Command.
    */
   constructor() {
     super();
-    this.FailedMessage = "مالي خلق الرد عليك.";
+    this.FailedMessage = "Only Fawaz (12500068) Can use this.";
   }
   /**
    *
@@ -18,7 +18,7 @@ module.exports = class Banded extends IFilter {
    */
   Validate = async (client, context) => {
     try {
-      if (context.User.Id === this.#Maker) return false;
+      if (context.User.Id === this.#Maker) return true;
     } catch (e) {
       return false;
     }
