@@ -81,23 +81,23 @@ module.exports = class CommandContext {
   };
   ReplyPlayer = async (cid, song = null, img = false) => {
     if (!song) {
-      //await this.Reply(this.Player.Code.getCode(cid, this.Language));
+      await this.Reply(this.Player.Code.getCode(cid, this.Language));
       return;
     }
-    //  await this.Reply(this.Player.Code.getCode(cid, this.Language) + song.Title);
+      await this.Reply(this.Player.Code.getCode(cid, this.Language) + song.Title);
   };
   Play = async () => {
     let gid = this.Message.Recipient.Id;
     if (!(await this.isSlotsRady(gid))) return;
+    await this.joinStage();
     await this.Player.Play(
       gid,
       this.Rest,
       async (song) => {
-        await this.joinStage();
-        await this.ReplyPlayer(3, song);
+        //await this.ReplyPlayer(3, song);
       },
       async (e) => {
-        await this.ReplyPlayer(e);
+        //await this.ReplyPlayer(e);
       }
     );
   };
@@ -106,10 +106,10 @@ module.exports = class CommandContext {
     await this.Player.Prev(
       gid,
       async (song) => {
-        await this.ReplyPlayer(3, song);
+        //await this.ReplyPlayer(3, song);
       },
       async (e) => {
-        await this.ReplyPlayer(e);
+        //await this.ReplyPlayer(e);
       }
     );
   };
@@ -120,10 +120,10 @@ module.exports = class CommandContext {
     await this.Player.Next(
       gid,
       async (song) => {
-        await this.ReplyPlayer(3, song);
+        //await this.ReplyPlayer(3, song);
       },
       async (e) => {
-        await this.ReplyPlayer(e);
+        //await this.ReplyPlayer(e);
       }
     );
   };
@@ -156,10 +156,10 @@ module.exports = class CommandContext {
     await this.Player.End(
       gid,
       async (s) => {
-        await this.ReplyPlayer(s);
+        //await this.ReplyPlayer(s);
       },
       async (e) => {
-        await this.ReplyPlayer(e);
+        //await this.ReplyPlayer(e);
       }
     );
   };
@@ -193,10 +193,10 @@ module.exports = class CommandContext {
     await this.Player.Stop(
       gid,
       async (s) => {
-        await this.ReplyPlayer(s);
+        //await this.ReplyPlayer(s);
       },
       async (e) => {
-        await this.ReplyPlayer(14);
+        //await this.ReplyPlayer(14);
       }
     );
   };

@@ -319,10 +319,7 @@ module.exports = class Player {
     }
     queue.Playing = false;
     queue.CurrentSong = null;
-<<<<<<< HEAD
     return;
-=======
->>>>>>> 8e752fea4a53561d3dfb9ed9683c1e4741c324bc
   };
   consumerUpdate = async (data) => {
     let { id, consumerCount, broadcasterCount } = data.body;
