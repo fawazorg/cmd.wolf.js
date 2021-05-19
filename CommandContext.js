@@ -81,10 +81,10 @@ module.exports = class CommandContext {
   };
   ReplyPlayer = async (cid, song = null, img = false) => {
     if (!song) {
-      await this.Reply(this.Player.Code.getCode(cid, this.Language));
+      //await this.Reply(this.Player.Code.getCode(cid, this.Language));
       return;
     }
-      await this.Reply(this.Player.Code.getCode(cid, this.Language) + song.Title);
+    //await this.Reply(this.Player.Code.getCode(cid, this.Language) + song.Title);
   };
   Play = async () => {
     let gid = this.Message.Recipient.Id;
