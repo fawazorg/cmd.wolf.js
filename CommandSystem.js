@@ -226,7 +226,7 @@ module.exports = class CommandSystem {
       break;
     }
 
-    if (!passed && failedMessage) return await context.Reply(failedMessage);
+    if (!passed && failedMessage) return; //await context.Reply(failedMessage);
 
     if (!passed) return;
 
