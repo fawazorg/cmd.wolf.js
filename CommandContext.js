@@ -157,8 +157,9 @@ module.exports = class CommandContext {
     let slot = slots.filter(
       (s) => s.occupierId == this.Client.CurrentUser.Id
     )[0];
-    console.log(slot);
-    this.Client.Stages.StageDisconnect(gid, slot.id, slot.occupierId);
+    if (slot) {
+      this.Client.Stages.StageDisconnect(gid, slot.id, slot.occupierId);
+    }
     await this.Player.End(
       gid,
       async (s) => {
