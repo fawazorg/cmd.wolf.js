@@ -1,5 +1,5 @@
 {
-  "name": "commands.wolf.js",
+  "name": "cmd.wolf.js",
   "version": "2.0.19",
   "description": "The Worlds Online Festival API Command System",
   "main": "index.js",
@@ -10,7 +10,6 @@
   "dependencies": {
     "mime-types": "^2.1.27",
     "socket.io-client": "^2.4.0",
-    "wolf.js": "file:../wolf.js",
-    "youtube-dl-exec": "^1.2.1"
+    "wolf.js": "fawazorg/wolf.js"
   }
 }

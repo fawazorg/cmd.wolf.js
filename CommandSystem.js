@@ -1,10 +1,8 @@
 const { Client, Message, Group } = require("wolf.js");
 const Command = require("./Command");
 const CommandContext = require("./CommandContext");
-const Player = require("./Player");
 module.exports = class CommandSystem {
   #Client;
-  #Player;
   #Translations;
   #Commands;
   #RegexCommands;
@@ -19,7 +17,6 @@ module.exports = class CommandSystem {
    */
   constructor(client, config) {
     this.#Client = client;
-    this.#Player = new Player();
     this.#Translations = null;
     this.#Commands = [];
 
@@ -28,13 +25,6 @@ module.exports = class CommandSystem {
     this.#FiltersInheritance = config?.FilterInheritance ?? true;
 
     this.#Client.On.Message.Received = this.#ProcessMessage;
-    this.#Player.Signal.Conn.on("song_end", this.#Player.song_end);
-    /*
-    this.#Client.V3.Conn.on(
-      "group audio count update",
-      this.#Player.consumerUpdate
-    );
-    */
   }
 
   /**
@@ -199,7 +189,6 @@ module.exports = class CommandSystem {
 
     let context = new CommandContext({
       client: this.#Client,
-      player: this.#Player,
       language: cmd.lang ?? null,
       translations: this.#Translations,
       message: message,
@@ -226,7 +215,7 @@ module.exports = class CommandSystem {
       break;
     }
 
-    if (!passed && failedMessage) return; //await context.Reply(failedMessage);
+    if (!passed && failedMessage) await context.Reply(failedMessage);
 
     if (!passed) return;
 
