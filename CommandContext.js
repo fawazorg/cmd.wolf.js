@@ -68,7 +68,6 @@ module.exports = class CommandContext {
       ? this.Message.Recipient.Id
       : this.Message.Originator.Id;
     let image = await this.imageBuffer(content);
-    console.log(image);
     return await this.Client.Messages.SendMessage(
       recipient,
       this.Message.IsGroup,
