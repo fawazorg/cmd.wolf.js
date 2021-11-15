@@ -1,6 +1,6 @@
 {
   "name": "cmd.wolf.js",
-  "version": "2.0.19",
+  "version": "2.0.20",
   "description": "The Worlds Online Festival API Command System",
   "main": "index.js",
   "repository": "https://github.com/christopher-wolflive/commands.wolf.js.git",
