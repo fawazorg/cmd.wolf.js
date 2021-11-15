@@ -1,4 +1,5 @@
 const { Client, Message, GroupMessage, User, Group } = require("wolf.js");
+const jimp = require("jimp");
 const p = require("path");
 const fs = require("fs/promises");
 const mime = require("mime-types");
@@ -62,16 +63,40 @@ module.exports = class CommandContext {
    * Reply with an image
    * @param {any} content
    */
-  ReplyImage = async (content, mimeType) => {
-    //TODO: work to replay image . it's easy don't warry
+  ReplyImage = async (content) => {
     let recipient = this.Message.IsGroup
       ? this.Message.Recipient.Id
       : this.Message.Originator.Id;
+    let image = await this.imageBuffer(content);
+    console.log(image);
     return await this.Client.Messages.SendMessage(
       recipient,
       this.Message.IsGroup,
-      content,
-      mimeType
+      image,
+      "image/jpeg"
     );
+  };
+
+  /**
+   * convert a image to buffer
+   * @param {String} url
+   */
+  imageBuffer = async (url) => {
+    let imagebuffer;
+    await jimp
+      .read(url)
+      .then(async (data) => {
+        await data
+          .getBufferAsync(jimp.MIME_JPEG)
+          // eslint-disable-next-line no-return-assign
+          .then((results) => (imagebuffer = results))
+          .catch((e) => {
+            console.log(e);
+          });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    return imagebuffer;
   };
 };
