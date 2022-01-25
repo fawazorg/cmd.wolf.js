@@ -11,6 +11,6 @@
     "jimp": "^0.16.1",
     "mime-types": "^2.1.27",
     "socket.io-client": "^2.4.0",
-    "wolf.js": "github:fawazorg/wolf.js"
+    "wolf.js": "github:fawazorg/wolf.jet"
   }
 }
